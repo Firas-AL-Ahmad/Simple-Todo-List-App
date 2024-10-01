@@ -20,66 +20,25 @@
 <body>
     <div id="container">
         <div id="head">
-            <h1 id=title>To Do List</h1>
+            <h1 id="title">To Do List</h1>
         </div>
-
         <div id="form-sec">
             <form id="form">
-                <input placeholder="Type your todo here...." class="input" name="text" type="text" />
+                <input id="input-content" placeholder="Type your todo here...." class="input" name="text" type="text" />
             </form>
-
-            <button class="Btn">
-
+            <!-- ADD BTN  -->
+            <button id="add-bnt" class="Btn">
                 <div class="sign">+</div>
-
                 <div class="text">Create</div>
             </button>
-
         </div>
-
-        <div id="todos-content">
-            <div id="todos-list">
-
-                <div id="todo-item">
-                    <!-- CHECKBOX -->
-                    <label class="container">
-                        <input checked="checked" type="checkbox">
-                        <div class="checkmark"></div>
-                    </label>
-
-                    <!-- CONTENT -->
-                    <p id="content-todo-item">
-                        Complete project report
-                    </p>
-
-
-                    <div class="actions">
-                        <div id="actions-bnt">
-                            <!-- EDIT -->
-                            <button id="edit-btn" class="btn">
-                                <span id="edit-icon" class="material-symbols-outlined">
-                                    edit_square
-                                </span>
-                            </button>
-                            <!-- DELETE -->
-                            <button id="delete-btn" class="btn">
-                                <span id="delete-icon" class="material-symbols-outlined">
-                                    delete_sweep
-                                </span>
-                            </button>
-                        </div>
-                        <!-- DATE -->
-                        <div id="date">
-                            <span>2024/5/5</span>
-                            <span class="material-symbols-outlined">
-                                calendar_month
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div id="todo-content">
+            <div id="todo-list"></div>
         </div>
     </div>
+
+    <script src="./main.js"></script>
+
 </body>
 
 </html>
