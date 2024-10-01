@@ -21,9 +21,9 @@ let tasks = [
   },
 ];
 
-function displayTasks() {
+function getAllTasks() {
   document.getElementById("todo-list").innerHTML = "";
-
+  let index = 0;
   for (let task of tasks) {
     let content = `
                     <div id="todo-item">
@@ -45,7 +45,7 @@ function displayTasks() {
                                     </span>
                                 </button>
                                 <!-- DELETE -->
-                                <button id="delete-btn" class="btn">
+                                <button onclick="deleteTask(${index})" id="delete-btn" class="btn">
                                     <span id="delete-icon" class="material-symbols-outlined">
                                         delete_sweep
                                     </span>
@@ -62,6 +62,7 @@ function displayTasks() {
                     </div>
                 `;
     document.getElementById("todo-list").innerHTML += content;
+    index++;
   }
 }
 
@@ -73,19 +74,28 @@ function createTask() {
     return;
   }
 
+  const now = new Date();
   const task = {
     title: taskTitle,
-    date: new Date().toLocaleString(),
+    date: `${now.getDay()}/${now.getMonth() + 1}/${now.getFullYear()}`,
     isDone: false,
   };
 
   tasks.push(task);
 
-  displayTasks();
+  getAllTasks();
 
   document.getElementById("input-content").value = "";
 }
 
+function deleteTask(index) {
+  let task = tasks[index];
+  if (confirm(`Are you sure you want to delete "${task.title}" task?`)) {
+    tasks.splice(index, 1);
+    getAllTasks();
+  }
+}
+
 document.getElementById("add-bnt").addEventListener("click", createTask);
 
-displayTasks();
+window.onload(getAllTasks());
