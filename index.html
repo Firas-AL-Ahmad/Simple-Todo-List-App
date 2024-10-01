@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/cssanimation.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>ToDo List App</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="head">
+            <h1 id=title>To Do List</h1>
+        </div>
+
+        <div id="form-sec">
+            <form id="form">
+                <input placeholder="Type your todo here...." class="input" name="text" type="text" />
+            </form>
+
+            <button class="Btn">
+
+                <div class="sign">+</div>
+
+                <div class="text">Create</div>
+            </button>
+
+        </div>
+
+        <div id="todos-content">
+            <div id="todos-list">
+
+                <div id="todo-item">
+                    <!-- CHECKBOX -->
+                    <label class="container">
+                        <input checked="checked" type="checkbox">
+                        <div class="checkmark"></div>
+                    </label>
+
+                    <!-- CONTENT -->
+                    <p id="content-todo-item">
+                        Complete project report
+                    </p>
+
+
+                    <div class="actions">
+                        <div id="actions-bnt">
+                            <!-- EDIT -->
+                            <button id="edit-btn" class="btn">
+                                <span id="edit-icon" class="material-symbols-outlined">
+                                    edit_square
+                                </span>
+                            </button>
+                            <!-- DELETE -->
+                            <button id="delete-btn" class="btn">
+                                <span id="delete-icon" class="material-symbols-outlined">
+                                    delete_sweep
+                                </span>
+                            </button>
+                        </div>
+                        <!-- DATE -->
+                        <div id="date">
+                            <span>2024/5/5</span>
+                            <span class="material-symbols-outlined">
+                                calendar_month
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
