@@ -21,6 +21,12 @@ let tasks = [
   },
 ];
 
+function getTasksFromLocalStorage() {
+  let tasksStored = JSON.parse(localStorage.getItem("tasks"));
+  tasks = tasksStored ?? [];
+}
+
+getTasksFromLocalStorage();
 function getAllTasks() {
   document.getElementById("todo-list").innerHTML = "";
   let index = 0;
@@ -84,6 +90,8 @@ function createTask() {
 
   tasks.push(task);
 
+  storTasks(tasks);
+
   getAllTasks();
 
   document.getElementById("input-content").value = "";
@@ -93,6 +101,7 @@ function deleteTask(index) {
   let task = tasks[index];
   if (confirm(`Are you sure you want to delete "${task.title}" task?`)) {
     tasks.splice(index, 1);
+    storTasks(tasks);
     getAllTasks();
   }
 }
@@ -100,15 +109,22 @@ function deleteTask(index) {
 function updateTask(index) {
   let newTaskContent = prompt("Modify what you want", tasks[index].title);
   tasks[index].title = newTaskContent;
+  storTasks(tasks);
   getAllTasks();
 }
 
 function toggleTaskCompletion(index) {
   let task = tasks[index];
   task.isDone = !task.isDone;
+  storTasks(tasks);
   getAllTasks();
 }
 
-document.getElementById("add-bnt").addEventListener("click", createTask);
+//**! local Storage Functions */
 
-window.onload(getAllTasks());
+function storTasks(tasks) {
+  let taskString = JSON.stringify(tasks);
+  localStorage.setItem("tasks", taskString);
+}
+
+document.getElementById("add-bnt").addEventListener("click", createTask);
