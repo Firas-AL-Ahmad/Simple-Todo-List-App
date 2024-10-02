@@ -136,7 +136,7 @@ body {
 #todo-list {
   width: 100%;
 }
-#todo-item {
+.todo-item {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -147,6 +147,9 @@ body {
   border: 3px solid #646ccc;
 }
 
+.completedTask {
+  background-color: #4d299e;
+}
 #todo-item:hover {
   box-shadow: rgba(135, 7, 255, 0.5) 0px 5px 15px;
 }

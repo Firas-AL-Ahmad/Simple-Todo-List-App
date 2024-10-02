@@ -26,12 +26,13 @@ function getAllTasks() {
   let index = 0;
   for (let task of tasks) {
     let content = `
-                    <div id="todo-item">
+                    <div class="todo-item ${
+                      task.isDone ? "completedTask" : ""
+                    }">
                         <!-- CHECKBOX -->
                         <label class="container">
-                            <input ${
-                              task.isDone ? "checked" : ""
-                            } type="checkbox">
+                            <input onclick="toggleTaskCompletion(${index})"
+                             ${task.isDone ? "checked" : ""} type="checkbox">
                             <div class="checkmark"></div>
                         </label>
                         <!-- CONTENT -->
@@ -39,7 +40,7 @@ function getAllTasks() {
                         <div class="actions">
                             <div id="actions-bnt">
                                 <!-- EDIT -->
-                                <button id="edit-btn" class="btn">
+                                <button onclick="updateTask(${index})" id="edit-btn" class="btn">
                                     <span id="edit-icon" class="material-symbols-outlined">
                                         edit_square
                                     </span>
@@ -94,6 +95,18 @@ function deleteTask(index) {
     tasks.splice(index, 1);
     getAllTasks();
   }
+}
+
+function updateTask(index) {
+  let newTaskContent = prompt("Modify what you want", tasks[index].title);
+  tasks[index].title = newTaskContent;
+  getAllTasks();
+}
+
+function toggleTaskCompletion(index) {
+  let task = tasks[index];
+  task.isDone = !task.isDone;
+  getAllTasks();
 }
 
 document.getElementById("add-bnt").addEventListener("click", createTask);
