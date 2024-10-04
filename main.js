@@ -1,33 +1,7 @@
-let tasks = [
-  {
-    title: "Math Homework",
-    date: "1/4/2024",
-    isDone: true,
-  },
-  {
-    title: "Science Project",
-    date: "1/5/2024",
-    isDone: false,
-  },
-  {
-    title: "History Essay",
-    date: "1/6/2024",
-    isDone: false,
-  },
-  {
-    title: "English Reading",
-    date: "1/7/2024",
-    isDone: true,
-  },
-];
+document.getElementById("add-bnt").addEventListener("click", createTask);
 
-function getTasksFromLocalStorage() {
-  let tasksStored = JSON.parse(localStorage.getItem("tasks"));
-  tasks = tasksStored ?? [];
-}
-
-getTasksFromLocalStorage();
 function getAllTasks() {
+  getTasksFromLocalStorage();
   document.getElementById("todo-list").innerHTML = "";
   let index = 0;
   for (let task of tasks) {
@@ -84,7 +58,7 @@ function createTask() {
   const now = new Date();
   const task = {
     title: taskTitle,
-    date: `${now.getDay()}/${now.getMonth() + 1}/${now.getFullYear()}`,
+    date: `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`,
     isDone: false,
   };
 
@@ -127,4 +101,9 @@ function storTasks(tasks) {
   localStorage.setItem("tasks", taskString);
 }
 
-document.getElementById("add-bnt").addEventListener("click", createTask);
+function getTasksFromLocalStorage() {
+  let tasksStored = JSON.parse(localStorage.getItem("tasks"));
+  tasks = tasksStored ?? [];
+}
+
+window.onload = getAllTasks;
