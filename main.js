@@ -1,5 +1,7 @@
 document.getElementById("add-bnt").addEventListener("click", createTask);
 
+window.onload = getAllTasks;
+
 function getAllTasks() {
   getTasksFromLocalStorage();
   document.getElementById("todo-list").innerHTML = "";
@@ -105,5 +107,3 @@ function getTasksFromLocalStorage() {
   let tasksStored = JSON.parse(localStorage.getItem("tasks"));
   tasks = tasksStored ?? [];
 }
-
-window.onload = getAllTasks;
